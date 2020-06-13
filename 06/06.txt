@@ -1,0 +1,9 @@
+
+Из созданной вами базы данных, необходимо получить список книг, которые написаны 3-мя соавторами.
+То есть, получить отчет «книга — количество соавторов» и отсеять те, у которых соавторов меньше 3х.
+
+-------------------------------------------
+
+SELECT books.* FROM books,authors,books_authors
+WHERE books_authors.book_id=books.id AND books_authors.author_id=authors.id
+GROUP BY books.id HAVING COUNT(books_authors.book_id) = 3
